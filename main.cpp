@@ -4,4 +4,8 @@ Auston's ideas
 Recipe
 Ingredient
 RecipeBook
+
+Kezrae Ideas
+SearchEngine(searchByName(), searchByIngredient(), searchByCategory())
+
 */
