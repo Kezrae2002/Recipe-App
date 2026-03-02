@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tacos</title>
+
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+<style>
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #f4f4f4;
+}
+
+/* =====================
+   DARK MODE STYLES
+===================== */
+
+body.dark-mode {
+  background: #121212;
+  color: #f0f0f0;
+}
+
+body.dark-mode .container {
+  background: #1e1e1e;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.6);
+}
+
+body.dark-mode .back-link {
+  color: #ffffff;
+}
+
+body.dark-mode .meta {
+  color: #cccccc;
+}
+
+body.dark-mode .favorite-btn {
+  background: #2a2a2a;
+}
+
+body.dark-mode .step-number {
+  background: #ff9800;
+}
+
+
+.container {
+  max-width: 1000px;
+  margin: 30px auto;
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+}
+
+.back-link {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 20px;
+  text-decoration: none;
+  color: #333;
+  font-weight: bold;
+}
+
+.hero-wrapper {
+  position: relative;
+}
+
+.hero-img {
+  width: 100%;
+  height: 340px;
+  object-fit: cover;
+}
+
+/* ❤️ Favorite Button */
+.favorite-btn {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  background: white;
+  border: none;
+  border-radius: 50%;
+  width: 45px;
+  height: 45px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.favorite-btn .material-icons {
+  color: #888;
+}
+
+.favorite-btn.active .material-icons {
+  color: #ff3b3b;
+}
+
+.content {
+  padding: 25px;
+}
+
+.title-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* ⚡ Quick & Easy tag */
+.tag {
+  background: #f4b400;
+  color: white;
+  padding: 4px 10px;
+  border-radius: 8px;
+  font-size: 12px;
+  margin-left: 10px;
+}
+
+.meta {
+  display: flex;
+  gap: 30px;
+  margin: 20px 0;
+  color: #555;
+  flex-wrap: wrap;
+}
+
+.columns {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+}
+
+ul {
+  padding-left: 18px;
+}
+
+.step {
+  display: flex;
+  margin-bottom: 12px;
+}
+
+.step-number {
+  background: #f4b400;
+  color: white;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 10px;
+  font-size: 14px;
+}
+
+@media (max-width: 768px) {
+  .columns {
+    grid-template-columns: 1fr;
+  }
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+
+<a href="index.html" class="back-link">
+  <span class="material-icons">arrow_back</span>
+  Back to Recipes
+</a>
+
+<div class="hero-wrapper">
+  <img src="tacos.jpg" class="hero-img" alt="Tacos">
+
+  <button class="favorite-btn" id="favoriteBtn">
+    <span class="material-icons">favorite_border</span>
+  </button>
+</div>
+
+<div class="content">
+
+  <div class="title-row">
+    <div>
+      <h1>Tacos</h1>
+      <p>Quick and easy tacos with seasoned meat and fresh toppings
+        <span class="tag">Quick & Easy</span>
+      </p>
+    </div>
+  </div>
+
+  <div class="meta">
+    <div>⏱ Prep: 10 min<br><small>Cook: 10 min</small></div>
+    <div>🍽 4 servings</div>
+    <div>👨‍🍳 Easy</div>
+  </div>
+
+  <hr>
+
+  <div class="columns">
+
+    <div>
+      <h2>Ingredients</h2>
+      <ul>
+        <li>500g ground beef or chicken</li>
+        <li>1 packet taco seasoning</li>
+        <li>8–10 taco shells or tortillas</li>
+        <li>1 cup shredded lettuce</li>
+        <li>1 cup diced tomatoes</li>
+        <li>1 cup shredded cheese</li>
+        <li>1/2 cup sour cream</li>
+        <li>Salsa to taste</li>
+        <li>Fresh cilantro and lime wedges</li>
+      </ul>
+    </div>
+
+    <div>
+      <h2>Instructions</h2>
+
+      <div class="step"><div class="step-number">1</div>Brown ground meat in a skillet over medium-high heat.</div>
+      <div class="step"><div class="step-number">2</div>Drain fat and add taco seasoning with 1/4 cup water.</div>
+      <div class="step"><div class="step-number">3</div>Simmer 5 minutes until sauce thickens.</div>
+      <div class="step"><div class="step-number">4</div>Warm taco shells according to package directions.</div>
+      <div class="step"><div class="step-number">5</div>Fill shells with seasoned meat.</div>
+      <div class="step"><div class="step-number">6</div>Top with lettuce, tomatoes, cheese, and sour cream.</div>
+      <div class="step"><div class="step-number">7</div>Add salsa and garnish with cilantro.</div>
+      <div class="step"><div class="step-number">8</div>Serve with lime wedges.</div>
+
+    </div>
+
+  </div>
+
+<!-- =====================
+     RATINGS & REVIEWS
+===================== -->
+
+<div class="reviews-section" style="padding: 25px; border-top: 1px solid #eee;">
+
+  <h2>⭐ Ratings & Reviews</h2>
+
+  <!-- Average Rating Display -->
+  <div style="margin: 10px 0 20px 0;">
+    <strong>4.5 out of 5</strong>
+    <div style="color: #ff9800; font-size: 20px;">
+      ★★★★☆
+    </div>
+    <small>24 reviews</small>
+  </div>
+
+  <!-- Write Review (Design Only) -->
+  <div style="margin-bottom: 25px;">
+    <h3>Leave a Review</h3>
+    <div style="font-size: 22px; color: #ccc;">
+      ☆☆☆☆☆
+    </div>
+    <textarea placeholder="Write your review..."
+      style="width: 100%; padding: 10px; margin-top: 10px; border-radius: 8px; border: 1px solid #ccc;"></textarea>
+    <button style="margin-top: 10px; padding: 8px 16px; background: #ff6b35; color: white; border: none; border-radius: 6px; cursor: pointer;">
+      Submit Review
+    </button>
+  </div>
+
+  <!-- Example Reviews -->
+  <div style="margin-bottom: 15px;">
+    <strong>⭐️⭐️⭐️⭐️⭐️ Alex D.</strong>
+    <p>These burgers were super juicy and flavorful. Definitely making again!</p>
+  </div>
+
+  <div>
+    <strong>⭐️⭐️⭐️⭐️ Jamie K.</strong>
+    <p>Really good recipe, easy to follow instructions.</p>
+  </div>
+
+</div>
+
+</div>
+</div>
+
+<!-- ⭐ FAVORITES SCRIPT (Correctly placed) -->
+<script>
+const favoriteBtn = document.getElementById("favoriteBtn");
+const recipeId = "tacos"; 
+
+// Load saved favorites
+let favorites = JSON.parse(localStorage.getItem("favorites")) || [];
+
+// If already a favorite → show red heart
+if (favorites.includes(recipeId)) {
+  favoriteBtn.classList.add("active");
+  favoriteBtn.querySelector(".material-icons").textContent = "favorite";
+}
+
+// Toggle favorite
+favoriteBtn.addEventListener("click", function () {
+  const icon = this.querySelector(".material-icons");
+  let favorites = JSON.parse(localStorage.getItem("favorites")) || [];
+
+  if (favorites.includes(recipeId)) {
+    favorites = favorites.filter(id => id !== recipeId);
+    icon.textContent = "favorite_border";
+    this.classList.remove("active");
+  } else {
+    favorites.push(recipeId);
+    icon.textContent = "favorite";
+    this.classList.add("active");
+  }
+
+  localStorage.setItem("favorites", JSON.stringify(favorites));
+});
+</script>
+
+<script src="script.js"></script>
+
+</body>
+</html>

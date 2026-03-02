@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Quesadillas</title>
+
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+<style>
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #f4f4f4;
+}
+
+/* =====================
+   DARK MODE STYLES
+===================== */
+
+body.dark-mode {
+  background: #121212;
+  color: #f0f0f0;
+}
+
+body.dark-mode .container {
+  background: #1e1e1e;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.6);
+}
+
+body.dark-mode .back-link {
+  color: #ffffff;
+}
+
+body.dark-mode .meta {
+  color: #cccccc;
+}
+
+body.dark-mode .favorite-btn {
+  background: #2a2a2a;
+}
+
+body.dark-mode .step-number {
+  background: #ff9800;
+}
+
+.container {
+  max-width: 1000px;
+  margin: 30px auto;
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+}
+
+.back-link {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 20px;
+  text-decoration: none;
+  color: #333;
+  font-weight: bold;
+}
+
+.hero-wrapper {
+  position: relative;
+}
+
+.hero-img {
+  width: 100%;
+  height: 340px;
+  object-fit: cover;
+}
+
+/* ❤️ Favorite Button */
+.favorite-btn {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  background: white;
+  border: none;
+  border-radius: 50%;
+  width: 46px;
+  height: 46px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.25);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.favorite-btn .material-icons {
+  font-size: 26px;
+  color: #888;
+}
+
+.favorite-btn.active .material-icons {
+  color: #ff3b3b;
+}
+
+.content {
+  padding: 25px;
+}
+
+.title-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* ⚡ Quick & Easy Tag */
+.tag {
+  background: #f4b400;
+  color: white;
+  padding: 4px 10px;
+  border-radius: 8px;
+  font-size: 12px;
+  margin-left: 10px;
+}
+
+.meta {
+  display: flex;
+  gap: 30px;
+  margin: 20px 0;
+  color: #555;
+  flex-wrap: wrap;
+}
+
+.columns {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+}
+
+ul {
+  padding-left: 18px;
+}
+
+.step {
+  display: flex;
+  margin-bottom: 12px;
+}
+
+.step-number {
+  background: #f4b400;
+  color: white;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 10px;
+  font-size: 14px;
+}
+
+@media (max-width: 768px) {
+  .columns {
+    grid-template-columns: 1fr;
+  }
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+
+<a href="index.html" class="back-link">
+  <span class="material-icons">arrow_back</span>
+  Back to Recipes
+</a>
+
+<div class="hero-wrapper">
+  <img src="quesadillas.jpg" class="hero-img" alt="Quesadillas">
+
+  <!-- ❤️ Favorite Button -->
+  <button class="favorite-btn" id="favoriteBtn" data-id="quesadillas">
+    <span class="material-icons">favorite_border</span> 
+  </button>
+</div>
+
+<div class="content">
+
+  <div class="title-row">
+    <div>
+      <h1>Quesadillas</h1>
+      <p>Crispy tortillas filled with melted cheese and vegetables
+        <span class="tag">Quick & Easy</span>
+      </p>
+    </div>
+  </div>
+
+  <div class="meta">
+    <div>⏱ Prep: 5 min<br><small>Cook: 10 min</small></div>
+    <div>🍽 2 servings</div>
+    <div>👨‍🍳 Easy</div>
+  </div>
+
+  <hr>
+
+  <div class="columns">
+
+    <div>
+      <h2>Ingredients</h2>
+      <ul>
+        <li>4 large flour tortillas</li>
+        <li>2 cups shredded cheese</li>
+        <li>1/2 bell pepper, diced</li>
+        <li>1/4 cup diced onion</li>
+        <li>2 tablespoons butter</li>
+        <li>Sour cream for serving</li>
+        <li>Salsa for serving</li>
+        <li>Optional: jalapeños, black beans, or corn</li>
+      </ul>
+    </div>
+
+    <div>
+      <h2>Instructions</h2>
+
+      <div class="step"><div class="step-number">1</div>Heat a large skillet over medium heat.</div>
+      <div class="step"><div class="step-number">2</div>Spread butter on one side of each tortilla.</div>
+      <div class="step"><div class="step-number">3</div>Place tortilla butter-side down in skillet.</div>
+      <div class="step"><div class="step-number">4</div>Add cheese, bell pepper, and onion.</div>
+      <div class="step"><div class="step-number">5</div>Fold and cook 2–3 minutes until golden.</div>
+      <div class="step"><div class="step-number">6</div>Flip and cook until cheese melts.</div>
+      <div class="step"><div class="step-number">7</div>Remove and cut into wedges.</div>
+      <div class="step"><div class="step-number">8</div>Serve hot with sour cream and salsa.</div>
+
+    </div>
+
+  </div>
+
+<!-- =====================
+     RATINGS & REVIEWS
+===================== -->
+
+<div class="reviews-section" style="padding: 25px; border-top: 1px solid #eee;">
+
+  <h2>⭐ Ratings & Reviews</h2>
+
+  <!-- Average Rating Display -->
+  <div style="margin: 10px 0 20px 0;">
+    <strong>4.5 out of 5</strong>
+    <div style="color: #ff9800; font-size: 20px;">
+      ★★★★☆
+    </div>
+    <small>24 reviews</small>
+  </div>
+
+  <!-- Write Review (Design Only) -->
+  <div style="margin-bottom: 25px;">
+    <h3>Leave a Review</h3>
+    <div style="font-size: 22px; color: #ccc;">
+      ☆☆☆☆☆
+    </div>
+    <textarea placeholder="Write your review..."
+      style="width: 100%; padding: 10px; margin-top: 10px; border-radius: 8px; border: 1px solid #ccc;"></textarea>
+    <button style="margin-top: 10px; padding: 8px 16px; background: #ff6b35; color: white; border: none; border-radius: 6px; cursor: pointer;">
+      Submit Review
+    </button>
+  </div>
+
+  <!-- Example Reviews -->
+  <div style="margin-bottom: 15px;">
+    <strong>⭐️⭐️⭐️⭐️⭐️ Alex D.</strong>
+    <p>These burgers were super juicy and flavorful. Definitely making again!</p>
+  </div>
+
+  <div>
+    <strong>⭐️⭐️⭐️⭐️ Jamie K.</strong>
+    <p>Really good recipe, easy to follow instructions.</p>
+  </div>
+
+</div>
+
+
+</div>
+</div>
+
+<script>
+// ❤️ FAVORITES SYSTEM
+
+const favoriteBtn = document.getElementById("favoriteBtn");
+const recipeId = favoriteBtn.dataset.id;
+
+let favorites = JSON.parse(localStorage.getItem("favorites")) || [];
+const icon = favoriteBtn.querySelector(".material-icons");
+
+// Load saved state
+if (favorites.includes(recipeId)) {
+  icon.textContent = "favorite";
+  favoriteBtn.classList.add("active");
+}
+
+// Toggle favorite
+favoriteBtn.addEventListener("click", () => {
+  if (favorites.includes(recipeId)) {
+    favorites = favorites.filter(id => id !== recipeId);
+    icon.textContent = "favorite_border";
+    favoriteBtn.classList.remove("active");
+  } else {
+    favorites.push(recipeId);
+    icon.textContent = "favorite";
+    favoriteBtn.classList.add("active");
+  }
+
+  localStorage.setItem("favorites", JSON.stringify(favorites));
+});
+</script>
+
+<script src="script.js"></script>
+
+</body>
+</html>

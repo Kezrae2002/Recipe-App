@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Login</title>
+
+<style>
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #f4f4f4;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.login-card {
+  background: white;
+  padding: 40px;
+  border-radius: 12px;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+  width: 320px;
+  text-align: center;
+}
+
+h1 {
+  margin-bottom: 10px;
+}
+
+p {
+  color: #666;
+  margin-bottom: 25px;
+}
+
+input {
+  width: 100%;
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  margin-bottom: 15px;
+  font-size: 16px;
+}
+
+button {
+  width: 100%;
+  padding: 12px;
+  background: #ff7f00;
+  border: none;
+  border-radius: 8px;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+button:hover {
+  background: #e96f00;
+}
+
+.error {
+  color: red;
+  font-size: 14px;
+  display: none;
+}
+
+.signup-link {
+  margin-top: 15px;
+  display: block;
+  color: #007bff;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.signup-link:hover {
+  text-decoration: underline;
+}
+</style>
+</head>
+<body>
+
+<div class="login-card">
+  <h1>Welcome 👋</h1>
+  <p>Log in to continue</p>
+
+  <input type="email" id="email" placeholder="Email">
+  <input type="password" id="password" placeholder="Password">
+
+  <div class="error" id="error">Please enter your email & password</div>
+
+  <button onclick="login()">Login</button>
+
+  <a href="signup.html" class="signup-link">Don't have an account? Sign up</a>
+</div>
+
+<script>
+function login() {
+  const email = document.getElementById("email").value;
+  const password = document.getElementById("password").value;
+  const error = document.getElementById("error");
+
+  if (!email || !email.includes("@") || password.length < 1) {
+    error.style.display = "block";
+    return;
+  }
+
+  // Save login session (temporary until database)
+  localStorage.setItem("userEmail", email);
+
+  // Redirect to homepage
+  window.location.href = "index.html";
+}
+
+// Auto skip login if already logged in
+if (localStorage.getItem("userEmail")) {
+  window.location.href = "index.html";
+}
+</script>
+
+</body>
+</html>

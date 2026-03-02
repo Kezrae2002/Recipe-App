@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sign Up</title>
+
+<style>
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #f4f4f4;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.signup-card {
+  background: white;
+  padding: 40px;
+  border-radius: 12px;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+  width: 320px;
+  text-align: center;
+}
+
+h1 {
+  margin-bottom: 10px;
+}
+
+p {
+  color: #666;
+  margin-bottom: 25px;
+}
+
+input {
+  width: 100%;
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  margin-bottom: 15px;
+  font-size: 16px;
+}
+
+button {
+  width: 100%;
+  padding: 12px;
+  background: #ff7f00;
+  border: none;
+  border-radius: 8px;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+button:hover {
+  background: #e96f00;
+}
+
+.small-link {
+  margin-top: 15px;
+  font-size: 14px;
+}
+
+.small-link a {
+  color: #ff7f00;
+  text-decoration: none;
+}
+</style>
+</head>
+<body>
+
+<div class="signup-card">
+  <h1>Create Account</h1>
+  <p>Join DishNest today</p>
+
+  <input type="text" id="name" placeholder="Your Name">
+  <input type="email" id="email" placeholder="you@email.com">
+  <input type="password" id="password" placeholder="Create Password">
+
+  <button onclick="signup()">Create Account</button>
+
+  <div class="small-link">
+    Already have an account? <a href="login.html">Login</a>
+  </div>
+</div>
+
+<script>
+function signup() {
+  const name = document.getElementById("name").value;
+  const email = document.getElementById("email").value;
+  const password = document.getElementById("password").value;
+
+  if (!name || !email || !password) {
+    alert("Please fill out all fields.");
+    return;
+  }
+
+  if (!email.includes("@")) {
+    alert("Enter a valid email.");
+    return;
+  }
+
+  // Save user account
+  const userData = {
+    name: name,
+    email: email,
+    password: password
+  };
+
+  localStorage.setItem("userAccount", JSON.stringify(userData));
+  localStorage.setItem("userEmail", email); // auto-login
+
+  alert("Account created! Redirecting...");
+
+  // Redirect to main app
+  window.location.href = "index.html";
+}
+</script>
+
+</body>
+</html>

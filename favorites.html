@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>DishNest - Favorites</title>
+
+<style>
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #f8f8f8;
+}
+
+/* =====================
+   FAVORITES DARK MODE FIX
+===================== */
+
+/* Header */
+body.dark-mode header {
+  background-color: #1f1f1f;
+  border-bottom: 1px solid #333;
+}
+
+/* =====================
+   FULL DARK MODE (MATCH INDEX)
+===================== */
+
+/* Entire Page */
+body.dark-mode {
+  background-color: #121212;
+  color: #f0f0f0;
+}
+
+/* Header */
+body.dark-mode header {
+  background-color: #1f1f1f;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.7);
+  border-bottom: none;
+}
+
+/* Navigation Links */
+body.dark-mode nav ul li a {
+  color: #ffffff;
+}
+
+body.dark-mode nav ul li a:hover {
+  color: #ff5a5a;
+}
+
+/* Page Title */
+body.dark-mode h1 {
+  color: #ffffff;
+}
+
+/* Subtitle Text */
+body.dark-mode .favorites-header p {
+  color: #cccccc;
+}
+
+/* Favorite Cards */
+body.dark-mode .favorite-item {
+  background-color: #1e1e1e;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.6);
+}
+
+/* Card Title */
+body.dark-mode .favorite-item h3 {
+  color: #ffffff;
+}
+
+/* Card Description */
+body.dark-mode .favorite-item p {
+  color: #cccccc;
+}
+
+/* Empty Message */
+body.dark-mode .empty-message {
+  color: #cccccc;
+}
+
+
+body.dark-mode nav ul li a {
+  color: #ffffff;
+}
+
+body.dark-mode nav ul li a:hover {
+  color: #ff5a5a;
+}
+
+body.dark-mode .container {
+  background: #1e1e1e;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.6);
+}
+
+/* Page Header Text */
+body.dark-mode .favorites-header p {
+  color: #cccccc;
+}
+
+/* Favorite Cards */
+body.dark-mode .favorite-item {
+  background-color: #1e1e1e;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.6);
+}
+
+body.dark-mode .favorite-item h3 {
+  color: #ffffff;
+}
+
+body.dark-mode .favorite-item p {
+  color: #bbbbbb;
+}
+
+/* Empty Message */
+body.dark-mode .empty-message {
+  color: #cccccc;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 30px;
+  background-color: white;
+  border-bottom: 1px solid #ddd;
+}
+
+.logo img {
+  height: 120px;
+}
+
+nav ul {
+  display: flex;
+  list-style: none;
+  gap: 25px;
+  font-size: 18px;
+}
+
+nav ul li a {
+  text-decoration: none;
+  color: black;
+}
+
+nav ul li a:hover {
+  color: #ff5a5a;
+}
+
+.favorites-header {
+  text-align: center;
+  padding: 40px 20px;
+}
+
+.favorites-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 20px;
+  padding: 20px 40px;
+}
+
+.favorite-item {
+  background-color: white;
+  border-radius: 14px;
+  padding: 15px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.favorite-item:hover {
+  transform: translateY(-5px);
+}
+
+.favorite-item img {
+  width: 100%;
+  border-radius: 12px;
+  height: 170px;
+  object-fit: cover;
+}
+
+.favorite-item h3 {
+  margin: 10px 0 5px;
+}
+
+.favorite-item p {
+  font-size: 14px;
+  color: #777;
+}
+
+.empty-message {
+  text-align: center;
+  padding: 40px;
+  color: #555;
+  font-size: 20px;
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo">
+    <img src="DishNest_Logo.png" alt="Logo">
+  </div>
+  <nav>
+    <ul>
+      <li><a href="index.html">← Back to All Recipes</a></li>
+      <li><a href="favorites.html" style="color:#ff5a5a;">❤️ Favorites</a></li>
+    </ul>
+  </nav>
+</header>
+
+<div class="favorites-header">
+  <h1>Your Favorite Recipes</h1>
+  <p>All the dishes you've saved in one place.</p>
+</div>
+
+<div id="emptyMessage" class="empty-message">
+  You haven't added any favorites yet.
+  <br><br>
+  ⭐ Start exploring dishes and click the heart icon to save them!
+</div>
+
+<div id="favoritesGrid" class="favorites-grid"></div>
+
+<script>
+// All available recipes
+const recipes = {
+  "apple-pie": {
+    title: "Apple Pie",
+    image: "apple_pie.jpg",
+    description: "Classic homemade apple pie with a flaky crust",
+    link: "apple-pie.html"
+  },
+  "beef-burger": {
+    title: "Beef Burgers",
+    image: "beef_burger.jpg",
+    description: "Juicy homemade beef burgers",
+    link: "beef-burger.html"
+  },
+  "brownies": {
+    title: "Brownies",
+    image: "brownies.jpg",
+    description: "Rich and fudgy chocolate brownies",
+    link: "brownies.html"
+  },
+  "vegan-chili": {
+    title: "Vegan Chili",
+    image: "vegan_chili.jpg",
+    description: "Hearty plant-based chili",
+    link: "vegan-chili.html"
+  },
+  "vegetable-stir-fry": {
+    title: "Vegetable Stir Fry",
+    image: "vegetable_stirfry - Copy.webp",
+    description: "Colorful vegetables in savory sauce",
+    link: "vegetable-stir-fry.html"
+  },
+  "grilled-chicken": {
+    title: "Grilled Chicken",
+    image: "grilled_chicken.jpg",
+    description: "Perfectly seasoned grilled chicken",
+    link: "grilled-chicken.html"
+  },
+  "quesadillas": {
+    title: "Quesadillas",
+    image: "quesadillas.jpg",
+    description: "Crispy tortillas with melted cheese",
+    link: "quesadillas.html"
+  },
+
+  "tacos": {
+  title: "Tacos",
+  image: "tacos.jpg",
+  description: "Quick and easy tacos with seasoned meat and fresh toppings",
+  link: "tacos.html"
+},
+
+};
+
+const favorites = JSON.parse(localStorage.getItem("favorites")) || [];
+const grid = document.getElementById("favoritesGrid");
+const emptyMessage = document.getElementById("emptyMessage");
+
+if (favorites.length > 0) {
+  emptyMessage.style.display = "none";
+
+  favorites.forEach(id => {
+    const recipe = recipes[id];
+    if (!recipe) return;
+
+    const card = document.createElement("div");
+    card.classList.add("favorite-item");
+    card.innerHTML = `
+      <img src="${recipe.image}" alt="${recipe.title}">
+      <h3>${recipe.title}</h3>
+      <p>${recipe.description}</p>
+    `;
+
+    card.addEventListener("click", () => {
+      window.location.href = recipe.link;
+    });
+
+    grid.appendChild(card);
+  });
+}
+</script>
+
+<script src="script.js"></script>
+
+</body>
+</html>
