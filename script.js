@@ -197,6 +197,45 @@ if (searchBar) {
       }
     } else {
       if (noResults) noResults.remove();
+    } 
+  });
+}
+
+
+/* =====================
+   LOGIN FORM
+===================== */
+
+const loginForm = document.getElementById("loginForm");
+
+if (loginForm) {
+  loginForm.addEventListener("submit", async function (e) {
+    e.preventDefault();
+
+    const email = document.getElementById("email").value;
+    const password = document.getElementById("password").value;
+
+    try {
+      const response = await fetch("http://127.0.0.1:3000/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ email, password })
+      });
+
+      const data = await response.json();
+
+      alert(data.message);
+
+      if (response.ok) {
+        localStorage.setItem("userEmail", email);
+        window.location.href = "index.html";
+      }
+
+    } catch (error) {
+      console.error("Login error:", error);
+      alert("Something went wrong. Try again.");
     }
   });
 }
