@@ -231,6 +231,7 @@ ul {
 
   </div>
 
+
 <!-- =====================
      RATINGS & REVIEWS
 ===================== -->
@@ -239,38 +240,36 @@ ul {
 
   <h2>⭐ Ratings & Reviews</h2>
 
-  <!-- Average Rating Display -->
-  <div style="margin: 10px 0 20px 0;">
-    <strong>4.5 out of 5</strong>
-    <div style="color: #ff9800; font-size: 20px;">
-      ★★★★☆
-    </div>
-    <small>24 reviews</small>
-  </div>
+  <!-- Average rating will be inserted here dynamically -->
+  <div id="averageRating"></div>
 
-  <!-- Write Review (Design Only) -->
+  <!-- Leave Review Form -->
   <div style="margin-bottom: 25px;">
     <h3>Leave a Review</h3>
-    <div style="font-size: 22px; color: #ccc;">
-      ☆☆☆☆☆
-    </div>
-    <textarea placeholder="Write your review..."
+
+    <input id="reviewName" placeholder="Your Name"
+      style="width: 100%; padding: 8px; margin-bottom: 8px; border-radius: 6px; border: 1px solid #ccc;">
+
+    <select id="reviewRating"
+      style="width: 100%; padding: 8px; margin-bottom: 8px; border-radius: 6px;">
+      <option value="5">⭐⭐⭐⭐⭐ (5)</option>
+      <option value="4">⭐⭐⭐⭐ (4)</option>
+      <option value="3">⭐⭐⭐ (3)</option>
+      <option value="2">⭐⭐ (2)</option>
+      <option value="1">⭐ (1)</option>
+    </select>
+
+    <textarea id="reviewText" placeholder="Write your review..."
       style="width: 100%; padding: 10px; margin-top: 10px; border-radius: 8px; border: 1px solid #ccc;"></textarea>
-    <button style="margin-top: 10px; padding: 8px 16px; background: #ff6b35; color: white; border: none; border-radius: 6px; cursor: pointer;">
+
+    <button onclick="submitReview()"
+      style="margin-top: 10px; padding: 8px 16px; background: #ff6b35; color: white; border: none; border-radius: 6px; cursor: pointer;">
       Submit Review
     </button>
   </div>
 
-  <!-- Example Reviews -->
-  <div style="margin-bottom: 15px;">
-    <strong>⭐️⭐️⭐️⭐️⭐️ Alex D.</strong>
-    <p>These burgers were super juicy and flavorful. Definitely making again!</p>
-  </div>
-
-  <div>
-    <strong>⭐️⭐️⭐️⭐️ Jamie K.</strong>
-    <p>Really good recipe, easy to follow instructions.</p>
-  </div>
+  <!-- Reviews will load here dynamically -->
+  <div id="reviewsList"></div>
 
 </div>
 
@@ -279,33 +278,114 @@ ul {
 </div>
 
 <script>
-// ❤️ FAVORITES SYSTEM
+document.addEventListener("DOMContentLoaded", function() {
+  const favoriteBtn = document.getElementById("favoriteBtn");
+  const recipeId = favoriteBtn.dataset.id;
+  const icon = favoriteBtn.querySelector(".material-icons");
 
-const favoriteBtn = document.getElementById("favoriteBtn");
-const recipeId = favoriteBtn.dataset.id;
-
-let favorites = JSON.parse(localStorage.getItem("favorites")) || [];
-const icon = favoriteBtn.querySelector(".material-icons");
-
-// Load saved state
-if (favorites.includes(recipeId)) {
-  icon.textContent = "favorite";
-  favoriteBtn.classList.add("active");
-}
-
-// Toggle favorite
-favoriteBtn.addEventListener("click", () => {
+  // Favorites logic
+  let favorites = JSON.parse(localStorage.getItem("favorites")) || [];
   if (favorites.includes(recipeId)) {
-    favorites = favorites.filter(id => id !== recipeId);
-    icon.textContent = "favorite_border";
-    favoriteBtn.classList.remove("active");
-  } else {
-    favorites.push(recipeId);
     icon.textContent = "favorite";
     favoriteBtn.classList.add("active");
   }
 
-  localStorage.setItem("favorites", JSON.stringify(favorites));
+  favoriteBtn.addEventListener("click", function () {
+    if (favorites.includes(recipeId)) {
+      favorites = favorites.filter(id => id !== recipeId);
+      icon.textContent = "favorite_border";
+      this.classList.remove("active");
+    } else {
+      favorites.push(recipeId);
+      icon.textContent = "favorite";
+      this.classList.add("active");
+    }
+    localStorage.setItem("favorites", JSON.stringify(favorites));
+  });
+
+  // Reviews logic
+  loadReviews();
+
+  function loadReviews() {
+    fetch(`http://localhost:3000/api/reviews/${recipeId}`)
+      .then(res => res.json())
+      .then(data => {
+
+        const avg = data.average;
+        const total = data.totalReviews;
+
+        if (total === 0) {
+          document.getElementById("averageRating").innerHTML = `
+            <strong>No reviews yet</strong>
+          `;
+          document.getElementById("reviewsList").innerHTML = "";
+          return;
+        }
+
+        document.getElementById("averageRating").innerHTML = `
+          <strong>${avg} out of 5</strong>
+          <div style="color:#ff9800; font-size:20px;">
+            ${"★".repeat(Math.round(avg))}${"☆".repeat(5 - Math.round(avg))}
+          </div>
+          <small>${total} review${total > 1 ? "s" : ""}</small>
+        `;
+
+        const reviewsHTML = data.reviews.map(r => `
+          <div style="
+            margin-bottom:15px;
+            padding:10px;
+            border-bottom:1px solid #ddd;
+          ">
+            <strong>${"⭐".repeat(r.rating)} ${r.name}</strong>
+            <small style="display:block; color:#777;">
+              ${new Date(r.created_at).toLocaleDateString()}
+            </small>
+            <p>${r.review}</p>
+          </div>
+        `).join("");
+
+        document.getElementById("reviewsList").innerHTML = reviewsHTML;
+      });
+  }
+
+  window.submitReview = async function() {
+    const name = document.getElementById("reviewName").value.trim();
+    const rating = parseInt(document.getElementById("reviewRating").value);
+    const review = document.getElementById("reviewText").value.trim();
+
+    if (!name || !review) {
+      alert("Please fill out all fields.");
+      return;
+    }
+
+    try {
+      const response = await fetch("http://localhost:3000/api/reviews", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          recipe_id: recipeId,
+          name,
+          rating,
+          review
+        })
+      });
+
+      if (!response.ok) {
+        alert("Error submitting review.");
+        return;
+      }
+
+      document.getElementById("reviewName").value = "";
+      document.getElementById("reviewText").value = "";
+
+      loadReviews();
+
+    } catch (error) {
+      console.error("Review error:", error);
+      alert("Something went wrong.");
+    }
+  };
+
 });
 </script>
 
