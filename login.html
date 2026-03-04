@@ -84,39 +84,24 @@ button:hover {
   <h1>Welcome 👋</h1>
   <p>Log in to continue</p>
 
-  <input type="email" id="email" placeholder="Email">
-  <input type="password" id="password" placeholder="Password">
+  
 
   <div class="error" id="error">Please enter your email & password</div>
 
-  <button onclick="login()">Login</button>
+  <form id="loginForm">
+  <input type="email" id="email" placeholder="Email" required>
+  <input type="password" id="password" placeholder="Password" required>
+
+  <div class="error" id="error"></div>
+
+  <button type="submit">Login</button>
+</form>
 
   <a href="signup.html" class="signup-link">Don't have an account? Sign up</a>
 </div>
 
-<script>
-function login() {
-  const email = document.getElementById("email").value;
-  const password = document.getElementById("password").value;
-  const error = document.getElementById("error");
 
-  if (!email || !email.includes("@") || password.length < 1) {
-    error.style.display = "block";
-    return;
-  }
-
-  // Save login session (temporary until database)
-  localStorage.setItem("userEmail", email);
-
-  // Redirect to homepage
-  window.location.href = "index.html";
-}
-
-// Auto skip login if already logged in
-if (localStorage.getItem("userEmail")) {
-  window.location.href = "index.html";
-}
-</script>
+<script src="script.js"></script>
 
 </body>
 </html>
