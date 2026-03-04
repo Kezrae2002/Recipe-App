@@ -1,3 +1,0 @@
-/*
-Get a base line for the class functions so we can start working on connecting everything in the main as soon as possible
-*/
