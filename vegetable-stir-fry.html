@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Vegetable Stir Fry</title>
+<title>Vegan Chili</title>
 
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
@@ -70,7 +70,7 @@ body.dark-mode .step-number {
   object-fit: cover;
 }
 
-/* ❤️ Favorite Button */
+/* Favorite Button */
 .favorite-btn {
   position: absolute;
   bottom: 20px;
@@ -100,6 +100,12 @@ body.dark-mode .step-number {
   padding: 25px;
 }
 
+.title-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
 .tag {
   background: #2e9e62;
   color: white;
@@ -114,7 +120,6 @@ body.dark-mode .step-number {
   gap: 30px;
   margin: 20px 0;
   color: #555;
-  flex-wrap: wrap;
 }
 
 .columns {
@@ -144,12 +149,6 @@ ul {
   margin-right: 10px;
   font-size: 14px;
 }
-
-@media (max-width: 768px) {
-  .columns {
-    grid-template-columns: 1fr;
-  }
-}
 </style>
 </head>
 <body>
@@ -162,24 +161,28 @@ ul {
 </a>
 
 <div class="hero-wrapper">
-  <img src="Vegetable_stirfry - Copy.webp" class="hero-img">
+  <img src="vegan_chili.jpg" class="hero-img">
 
-  <!-- ❤️ Favorite Button -->
-  <button class="favorite-btn" id="favoriteBtn" data-id="vegetable-stir-fry">
+  <!-- Favorite Button -->
+  <button class="favorite-btn" id="favoriteBtn" data-id="vegan-chili">
     <span class="material-icons">favorite_border</span>
   </button>
 </div>
 
 <div class="content">
 
-  <h1>Vegetable Stir Fry</h1>
-  <p>Colorful mix of fresh vegetables in a savory Asian-inspired sauce
-    <span class="tag">Vegan</span>
-  </p>
+  <div class="title-row">
+    <div>
+      <h1>Vegan Chili</h1>
+      <p>Hearty and spicy plant-based chili with beans and vegetables
+        <span class="tag">Vegan</span>
+      </p>
+    </div>
+  </div>
 
   <div class="meta">
-    <div>⏱ Prep: 15 min<br><small>Cook: 10 min</small></div>
-    <div>🍽 4 servings</div>
+    <div>⏱ Prep: 15 min<br><small>Cook: 40 min</small></div>
+    <div>🍽 6 servings</div>
     <div>👨‍🍳 Easy</div>
   </div>
 
@@ -190,35 +193,37 @@ ul {
     <div>
       <h2>Ingredients</h2>
       <ul>
-        <li>2 tablespoons sesame oil</li>
-        <li>1 broccoli head, cut into florets</li>
-        <li>2 carrots, sliced</li>
-        <li>1 bell pepper, sliced</li>
-        <li>1 cup snap peas</li>
+        <li>2 tablespoons olive oil</li>
+        <li>1 large onion, diced</li>
         <li>3 cloves garlic, minced</li>
-        <li>1 tablespoon ginger, grated</li>
-        <li>3 tablespoons soy sauce</li>
-        <li>1 tablespoon rice vinegar</li>
-        <li>1 teaspoon sesame seeds</li>
-        <li>Cooked rice for serving</li>
+        <li>2 bell peppers, diced</li>
+        <li>2 cans kidney beans, drained</li>
+        <li>2 cans black beans, drained</li>
+        <li>1 can crushed tomatoes</li>
+        <li>2 tablespoons chili powder</li>
+        <li>1 tablespoon cumin</li>
+        <li>1 teaspoon smoked paprika</li>
+        <li>Salt and pepper to taste</li>
+        <li>Fresh cilantro for garnish</li>
       </ul>
     </div>
 
     <div>
       <h2>Instructions</h2>
 
-      <div class="step"><div class="step-number">1</div>Heat sesame oil in a wok or skillet over high heat.</div>
-      <div class="step"><div class="step-number">2</div>Add broccoli and carrots; stir fry 3–4 minutes.</div>
-      <div class="step"><div class="step-number">3</div>Add bell pepper and snap peas; cook 2 minutes.</div>
-      <div class="step"><div class="step-number">4</div>Push veggies aside; add garlic and ginger.</div>
-      <div class="step"><div class="step-number">5</div>Cook 30 seconds until fragrant.</div>
-      <div class="step"><div class="step-number">6</div>Mix together; add soy sauce and rice vinegar.</div>
-      <div class="step"><div class="step-number">7</div>Stir fry until tender-crisp.</div>
-      <div class="step"><div class="step-number">8</div>Top with sesame seeds and serve over rice.</div>
+      <div class="step"><div class="step-number">1</div>Heat olive oil in a large pot over medium heat.</div>
+      <div class="step"><div class="step-number">2</div>Sauté onion and garlic until softened (about 5 minutes).</div>
+      <div class="step"><div class="step-number">3</div>Add bell peppers and cook for another 5 minutes.</div>
+      <div class="step"><div class="step-number">4</div>Stir in chili powder, cumin, and paprika; cook 1 minute.</div>
+      <div class="step"><div class="step-number">5</div>Add beans and crushed tomatoes; bring to a boil.</div>
+      <div class="step"><div class="step-number">6</div>Reduce heat and simmer 30 minutes, stirring occasionally.</div>
+      <div class="step"><div class="step-number">7</div>Season with salt and pepper to taste.</div>
+      <div class="step"><div class="step-number">8</div>Garnish with cilantro and serve hot.</div>
 
     </div>
 
   </div>
+
 
 <!-- =====================
      RATINGS & REVIEWS
@@ -228,38 +233,36 @@ ul {
 
   <h2>⭐ Ratings & Reviews</h2>
 
-  <!-- Average Rating Display -->
-  <div style="margin: 10px 0 20px 0;">
-    <strong>4.5 out of 5</strong>
-    <div style="color: #ff9800; font-size: 20px;">
-      ★★★★☆
-    </div>
-    <small>24 reviews</small>
-  </div>
+  <!-- Average rating will be inserted here dynamically -->
+  <div id="averageRating"></div>
 
-  <!-- Write Review (Design Only) -->
+  <!-- Leave Review Form -->
   <div style="margin-bottom: 25px;">
     <h3>Leave a Review</h3>
-    <div style="font-size: 22px; color: #ccc;">
-      ☆☆☆☆☆
-    </div>
-    <textarea placeholder="Write your review..."
+
+    <input id="reviewName" placeholder="Your Name"
+      style="width: 100%; padding: 8px; margin-bottom: 8px; border-radius: 6px; border: 1px solid #ccc;">
+
+    <select id="reviewRating"
+      style="width: 100%; padding: 8px; margin-bottom: 8px; border-radius: 6px;">
+      <option value="5">⭐⭐⭐⭐⭐ (5)</option>
+      <option value="4">⭐⭐⭐⭐ (4)</option>
+      <option value="3">⭐⭐⭐ (3)</option>
+      <option value="2">⭐⭐ (2)</option>
+      <option value="1">⭐ (1)</option>
+    </select>
+
+    <textarea id="reviewText" placeholder="Write your review..."
       style="width: 100%; padding: 10px; margin-top: 10px; border-radius: 8px; border: 1px solid #ccc;"></textarea>
-    <button style="margin-top: 10px; padding: 8px 16px; background: #ff6b35; color: white; border: none; border-radius: 6px; cursor: pointer;">
+
+    <button onclick="submitReview()"
+      style="margin-top: 10px; padding: 8px 16px; background: #ff6b35; color: white; border: none; border-radius: 6px; cursor: pointer;">
       Submit Review
     </button>
   </div>
 
-  <!-- Example Reviews -->
-  <div style="margin-bottom: 15px;">
-    <strong>⭐️⭐️⭐️⭐️⭐️ Alex D.</strong>
-    <p>These burgers were super juicy and flavorful. Definitely making again!</p>
-  </div>
-
-  <div>
-    <strong>⭐️⭐️⭐️⭐️ Jamie K.</strong>
-    <p>Really good recipe, easy to follow instructions.</p>
-  </div>
+  <!-- Reviews will load here dynamically -->
+  <div id="reviewsList"></div>
 
 </div>
 
@@ -268,33 +271,114 @@ ul {
 </div>
 
 <script>
-// ❤️ FAVORITES SYSTEM
+document.addEventListener("DOMContentLoaded", function() {
+  const favoriteBtn = document.getElementById("favoriteBtn");
+  const recipeId = favoriteBtn.dataset.id;
+  const icon = favoriteBtn.querySelector(".material-icons");
 
-const favoriteBtn = document.getElementById("favoriteBtn");
-const recipeId = favoriteBtn.dataset.id;
-
-let favorites = JSON.parse(localStorage.getItem("favorites")) || [];
-const icon = favoriteBtn.querySelector(".material-icons");
-
-// Load saved state
-if (favorites.includes(recipeId)) {
-  icon.textContent = "favorite";
-  favoriteBtn.classList.add("active");
-}
-
-// Toggle favorite
-favoriteBtn.addEventListener("click", () => {
+  // Favorites logic
+  let favorites = JSON.parse(localStorage.getItem("favorites")) || [];
   if (favorites.includes(recipeId)) {
-    favorites = favorites.filter(id => id !== recipeId);
-    icon.textContent = "favorite_border";
-    favoriteBtn.classList.remove("active");
-  } else {
-    favorites.push(recipeId);
     icon.textContent = "favorite";
     favoriteBtn.classList.add("active");
   }
 
-  localStorage.setItem("favorites", JSON.stringify(favorites));
+  favoriteBtn.addEventListener("click", function () {
+    if (favorites.includes(recipeId)) {
+      favorites = favorites.filter(id => id !== recipeId);
+      icon.textContent = "favorite_border";
+      this.classList.remove("active");
+    } else {
+      favorites.push(recipeId);
+      icon.textContent = "favorite";
+      this.classList.add("active");
+    }
+    localStorage.setItem("favorites", JSON.stringify(favorites));
+  });
+
+  // Reviews logic
+  loadReviews();
+
+  function loadReviews() {
+    fetch(`http://localhost:3000/api/reviews/${recipeId}`)
+      .then(res => res.json())
+      .then(data => {
+
+        const avg = data.average;
+        const total = data.totalReviews;
+
+        if (total === 0) {
+          document.getElementById("averageRating").innerHTML = `
+            <strong>No reviews yet</strong>
+          `;
+          document.getElementById("reviewsList").innerHTML = "";
+          return;
+        }
+
+        document.getElementById("averageRating").innerHTML = `
+          <strong>${avg} out of 5</strong>
+          <div style="color:#ff9800; font-size:20px;">
+            ${"★".repeat(Math.round(avg))}${"☆".repeat(5 - Math.round(avg))}
+          </div>
+          <small>${total} review${total > 1 ? "s" : ""}</small>
+        `;
+
+        const reviewsHTML = data.reviews.map(r => `
+          <div style="
+            margin-bottom:15px;
+            padding:10px;
+            border-bottom:1px solid #ddd;
+          ">
+            <strong>${"⭐".repeat(r.rating)} ${r.name}</strong>
+            <small style="display:block; color:#777;">
+              ${new Date(r.created_at).toLocaleDateString()}
+            </small>
+            <p>${r.review}</p>
+          </div>
+        `).join("");
+
+        document.getElementById("reviewsList").innerHTML = reviewsHTML;
+      });
+  }
+
+  window.submitReview = async function() {
+    const name = document.getElementById("reviewName").value.trim();
+    const rating = parseInt(document.getElementById("reviewRating").value);
+    const review = document.getElementById("reviewText").value.trim();
+
+    if (!name || !review) {
+      alert("Please fill out all fields.");
+      return;
+    }
+
+    try {
+      const response = await fetch("http://localhost:3000/api/reviews", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          recipe_id: recipeId,
+          name,
+          rating,
+          review
+        })
+      });
+
+      if (!response.ok) {
+        alert("Error submitting review.");
+        return;
+      }
+
+      document.getElementById("reviewName").value = "";
+      document.getElementById("reviewText").value = "";
+
+      loadReviews();
+
+    } catch (error) {
+      console.error("Review error:", error);
+      alert("Something went wrong.");
+    }
+  };
+
 });
 </script>
 
