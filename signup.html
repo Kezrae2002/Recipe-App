@@ -88,35 +88,38 @@ button:hover {
 </div>
 
 <script>
-function signup() {
-  const name = document.getElementById("name").value;
-  const email = document.getElementById("email").value;
-  const password = document.getElementById("password").value;
+  console.log("Signup script loaded");
+  async function signup() {
+    const name = document.getElementById("name").value;
+    const email = document.getElementById("email").value;
+    const password = document.getElementById("password").value;
 
   if (!name || !email || !password) {
     alert("Please fill out all fields.");
     return;
   }
 
-  if (!email.includes("@")) {
-    alert("Enter a valid email.");
-    return;
+  try {
+    const response = await fetch("http://localhost:3000/signup", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({ name, email, password })
+    });
+
+    const data = await response.json();
+
+    alert(data.message);
+
+    if (response.ok) {
+      window.location.href = "login.html";
+    }
+
+  } catch (error) {
+    console.error("Signup error:", error);
+    alert("Something went wrong.");
   }
-
-  // Save user account
-  const userData = {
-    name: name,
-    email: email,
-    password: password
-  };
-
-  localStorage.setItem("userAccount", JSON.stringify(userData));
-  localStorage.setItem("userEmail", email); // auto-login
-
-  alert("Account created! Redirecting...");
-
-  // Redirect to main app
-  window.location.href = "index.html";
 }
 </script>
 
